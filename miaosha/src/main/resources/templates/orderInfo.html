@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<script type="text/javascript" th:src="@{/js/jquery-1.12.0.min.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap/3.3.4/css/bootstrap.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
+<script type="text/javascript" th:src="@{/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery.validate.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/messages_zh.js}"></script>
+<script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/js/md5.js}"></script>
+<script type="text/javascript" th:src="@{/js/my.js}"></script>
+<title>用户订单页面jmeter</title>
+</head>
+<body>
+   <div>
+     <span th:text="${orderinfo.id}"></span>
+     <table  class="table table-hover">
+     <thead>
+          <tr>
+          <th>商品名称</th>
+          <th>商品图片</th>
+          <th>订单价格</th>
+          <th>下单时间</th>
+          <th>订单状态</th>
+          <th>收货人和地址</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td th:text="${goodsVo.goodsName}"></td>
+          <td><img th:src="@{${goodsVo.goodsImg}}" width="100" height="100"/></td>
+          <td th:text="${orderinfo.goodsPrice}"></td>
+          <td th:text="${#dates.format(orderinfo.createDate,'yyyy-MM-dd HH:mm:ss')}"></td>
+          <td>
+              <span th:if="${orderinfo.status eq 0}">未支付</span> <!-- 未支付应该存在支付按钮 -->
+              <span th:if="${orderinfo.status eq 1}">待发货</span>
+              <span th:if="${orderinfo.status eq 2}">已发货</span>
+              <span th:if="${orderinfo.status eq 3}">已收货</span>
+              <span th:if="${orderinfo.status eq 4}">已退款</span>
+          </td>
+          <td>刘家豪 深圳市福田区</td>
+          </tr>
+          </tbody>
+     </table>
+   </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>商品列表页</title>
+<script type="text/javascript" th:src="@{/js/jquery-1.12.0.min.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap/3.3.4/css/bootstrap.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
+<script type="text/javascript" th:src="@{/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery.validate.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/messages_zh.js}"></script>
+<script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/js/md5.js}"></script>
+<script type="text/javascript" th:src="@{/js/my.js}"></script>
+</head>
+<body>
+<div class="logout">
+<span th:text="'hello   '+  ${user.nickname}+''"></span>
+<input type="button" class="btn btn-warning" value="退出" onclick="logout();" />
+</div>
+<div>
+<table class="table table-bordered">
+  <caption>秒杀布局</caption>
+  <thead>
+    <tr>
+      <th>商品名称</th>
+      <th>图片</th>
+      <th>原价</th>
+      <th>秒杀价</th>
+      <th>库存数量</th>
+      <th>详情</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="goods,goodsStat:${GoodsVoList}">
+      <td th:text="${goods.goodsName}"></td>
+      <td><img th:src="@{${goods.goodsImg}}" width="100" height="100"/></td>
+      <td th:text="${goods.goodsPrice}"></td>
+      <td th:text="${goods.miaoshaPrice}"></td>
+      <td th:text="${goods.stockCount}"></td>
+      <td><a th:href="'/goods/to_derail/'+${goods.id}">详情</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</body>
+
+</html>

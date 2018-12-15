@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<script type="text/javascript" th:src="@{/js/jquery-1.12.0.min.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap/3.3.4/css/bootstrap.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
+<script type="text/javascript" th:src="@{/bootstrap/3.3.4/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery.validate.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/messages_zh.js}"></script>
+<script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/js/md5.js}"></script>
+<script type="text/javascript" th:src="@{/js/detail.js}"></script>
+<title>秒杀详情页</title>
+</head>
+<body>
+   <div class="goodsdetail">
+     <img th:src="@{/img/top_ad.jpg}"/>
+     <span th:if="${user eq null}">
+                 您还没有登录，请赶紧登录以免错过你抢宝贝的时间！
+     </span>
+    <div>
+    <span>商品名称 :</span>
+    <span th:text="${goodsVo.goodsName}"></span>
+    </div>
+    <div>
+     <span>商品图片 :</span>
+    <span>
+    <img th:src="@{${goodsVo.goodsImg}}" width="100" height="100"/>
+    </span>
+    </div>
+    <div>
+     <span>商品原价 :</span>
+     <span th:text="${goodsVo.goodsPrice}"></span>
+    </div>
+    <div>
+     <span>商品秒杀价 :</span>
+     <span style="color: red" th:text="${goodsVo.miaoshaPrice}"></span> 
+    </div>
+     <div>
+     <span>商品数量 :</span>
+     <span style="color: red" th:text="${goodsVo.stockCount}"></span> 
+    </div>
+    <div>
+     <span>秒杀开始时间 :</span>
+     <span style="color: red" th:text="${#dates.format(goodsVo.startDate,'yyyy-MM-dd HH:mm:ss')}"></span> 
+     <span id="zhuantai">
+     <input type="hidden" id="remiaoSeconds" th:value="${remiaoSeconds}"/>
+        <span th:if="${miaoshaState eq 0}">
+                    秒杀倒计时<p id="countDown" th:text="${remiaoSeconds}"></p>秒</span>
+        <span th:if="${miaoshaState eq 1}">秒杀进行中</span>
+        <span th:if="${miaoshaState eq 2}">秒杀已结束</span>
+     </span> 
+    </div>
+    <div>
+     <span>商品介绍 :</span>
+      <span th:text="${goodsVo.goodsDetail}"></span> 
+    </div>
+    <div>
+    <input type="hidden" id="goodsid" name="goodsid" th:value="${goodsVo.id}"/>
+     <img onclick="reImg();"  id="verifyCodelmg" width="80" height="32"  src="" style="display:none;cursor: pointer;"/>
+     <input type="text"  style="border:1px solid #ccc;width: 80px;height: 32px;border-radius:5px;display: none;" name="verifyCode" value="100" class="" id="verifyCode"/>
+    <button type="button" id="miaoshaBtn" class="btn btn-danger" onclick="obtainPath();">立即秒杀</button>
+    <button type="button" id="miaoshaBtn" class="btn btn-danger" onclick="checklist();">返回列表</button>
+    <!-- <form id="miaoshaForm" action="/miaosha/miaoshaAction" method="post">
+      <input type="hidden" name="goodsid" th:value="${goodsVo.id}"/>
+    <button type="submit" id="miaoshaBtn" class="btn btn-danger">立即秒杀</button>
+    </form> -->
+    
+    </div>
+     
+   </div>
+</body>
+<script type="text/javascript">
+
+
+</script>
+</html>

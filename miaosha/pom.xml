@@ -1,0 +1,180 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.Springboot</groupId>
+  <artifactId>miaosha</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>miaosha</name>
+  <url>http://maven.apache.org</url>
+
+   <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.7</java.version>
+	</properties>
+  
+  <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.10.RELEASE</version>
+		<relativePath/> <!-- 下面的引用都使用這個版本的包   lookup parent from repository -->
+	</parent>
+
+  <dependencies>
+   <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+      
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		 <!-- rabbitmq -->
+      <dependency>
+       <groupId>org.springframework.boot</groupId>
+       <artifactId>spring-boot-starter-amqp</artifactId>
+      </dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<!-- 添加MySQL数据库驱动依赖包. -->
+		<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		
+			<!-- 	
+			spring-boot mybatis依赖：
+			
+			请不要使用1.0.0版本，因为还不支持拦截器插件，
+	    	1.1.1 是博主写帖子时候的版本，大家使用最新版本即可
+	     -->
+		<dependency>
+		    <groupId>org.mybatis.spring.boot</groupId>
+		    <artifactId>mybatis-spring-boot-starter</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		<!-- 
+    	MyBatis提供了拦截器接口，我们可以实现自己的拦截器，
+    	将其作为一个plugin装入到SqlSessionFactory中。 
+		Github上有位开发者写了一个分页插件，我觉得使用起来还可以，挺方便的。 
+		Github项目地址： https://github.com/pagehelper/Mybatis-PageHelper
+     -->	
+	    <dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		    <version>4.1.0</version>
+		</dependency>	
+
+		<!-- 添加Spring-data-jpa依赖. -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- 添加thymeleaf依赖. -->
+		<dependency>  
+         <groupId>org.springframework.boot</groupId>  
+         <artifactId>spring-boot-starter-thymeleaf</artifactId>  
+		</dependency>
+		<!-- 添加redis依赖. -->
+		<dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+		<!-- freemarker 模板引擎 
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.47</version>
+		</dependency>
+   
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-tomcat</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper -->
+		<dependency>
+		    <groupId>org.apache.tomcat.embed</groupId>
+		    <artifactId>tomcat-embed-jasper</artifactId>
+		    <version>9.0.6</version>
+		</dependency>
+		<!--加密 https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+		    <groupId>commons-codec</groupId>
+		    <artifactId>commons-codec</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.7</version>
+		</dependency>
+		
+		
+  </dependencies>
+  
+    <build>
+    <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <dependencies>
+	                <dependency>
+	                
+	                </dependency>
+                </dependencies>
+            </plugin>
+            <!-- 这是spring boot devtool plugin -->
+            <plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	            <configuration>
+	          		<!--fork :  如果没有该项配置，肯呢个devtools不会起作用，即应用不会restart -->
+	                <fork>true</fork>
+	            </configuration>
+	        </plugin>
+	        <plugin>
+	          <groupId>org.apache.maven.plugins</groupId>
+	          <artifactId>maven-war-plugin</artifactId>
+	          <configuration>
+	           <failOnMissingWebXml>false</failOnMissingWebXml>
+	          </configuration>
+	        </plugin>
+        </plugins>
+        
+        
+        
+    </build>
+  
+</project>
